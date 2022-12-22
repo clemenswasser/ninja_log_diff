@@ -66,6 +66,8 @@ def main():
     file_differences = list(map(lambda file: (
         file, after_durations[file] - before_durations[file]), file_intersection))
     file_differences.sort(key=itemgetter(1))
+    print("The overall difference in compile speed is:")
+    print(f"{sum(map(lambda file: file[1], file_differences))}ms")
     print("The biggest differences in compile speed are:")
     for file_difference in file_differences:
         print(f"  {file_difference[1]}ms {file_difference[0]}")
